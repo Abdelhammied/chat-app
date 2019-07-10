@@ -59,7 +59,6 @@ export default {
           })
           .then(response => {
             this.new_message = "";
-            console.log(response);
           })
           .catch(err => {
             console.log(err);
@@ -71,7 +70,10 @@ export default {
     Echo.private("new-message-for-room-" + this.chatroomId).listen(
       "NewMessageWasSent",
       e => {
-        console.log(e);
+        this.messages.push({
+          message: e.new_message,
+          sender_id: this.authUserId
+        });
       }
     );
   }

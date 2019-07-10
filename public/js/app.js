@@ -1836,7 +1836,6 @@ __webpack_require__.r(__webpack_exports__);
           message: this.new_message
         }).then(function (response) {
           _this2.new_message = "";
-          console.log(response);
         })["catch"](function (err) {
           console.log(err);
         });
@@ -1844,8 +1843,13 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    var _this3 = this;
+
     Echo["private"]("new-message-for-room-" + this.chatroomId).listen("NewMessageWasSent", function (e) {
-      console.log(e);
+      _this3.messages.push({
+        message: e.new_message,
+        sender_id: _this3.authUserId
+      });
     });
   }
 });

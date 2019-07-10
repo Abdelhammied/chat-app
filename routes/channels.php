@@ -1,5 +1,4 @@
 <?php
-
 use App\ChatRoom;
 
 /*
@@ -17,7 +16,6 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('new-message-for-room-{room_id}', function ($user, ChatRoom $room_id) {
-    return true;
+Broadcast::channel('new-message-for-room-{room_id}', function ($user,ChatRoom $room_id) {
     return $room_id->hasThisUser($user->id);
 });
