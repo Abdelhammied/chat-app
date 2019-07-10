@@ -72,7 +72,7 @@ export default {
       e => {
         this.messages.push({
           message: e.new_message,
-          sender_id: this.authUserId
+          sender_id: e.sender_id
         });
       }
     );

@@ -36,8 +36,8 @@ class ChatroomController extends Controller
     {
         $chatroom_id->addNewMessage($request->message);
 
-        event(new NewMessageWasSent($request->message, $chatroom_id->id));
-        
+        event(new NewMessageWasSent($request->message, auth()->user()->id, $chatroom_id->id));
+
         return response()->json('success', 200);
     }
 }

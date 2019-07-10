@@ -13,12 +13,14 @@ class NewMessageWasSent implements ShouldBroadcastNow
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $new_message;
+    public $sender_id;
     public $room_id;
 
-    public function __construct($new_message, $room_id)
+    public function __construct($new_message, $sender_id, $room_id)
     {
         $this->new_message = $new_message;
         $this->room_id = $room_id;
+        $this->sender_id = $sender_id;
     }
 
     public function broadcastOn()

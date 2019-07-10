@@ -1848,7 +1848,7 @@ __webpack_require__.r(__webpack_exports__);
     Echo["private"]("new-message-for-room-" + this.chatroomId).listen("NewMessageWasSent", function (e) {
       _this3.messages.push({
         message: e.new_message,
-        sender_id: _this3.authUserId
+        sender_id: e.sender_id
       });
     });
   }
